@@ -9,7 +9,7 @@ import './TabFriends.css';
 // * Tab Friends Dynamically Renders User's Inbound Friend/Room Requests and Online/Offline Friends.
 //   It uses SidebarUsersCont to Render Each User and Their Button OptionsProfileModal
 //   and uses ProfileModal To View Options for Interacting With User's Friends
-// !* Rending Online Friends and Offline Friends Has Been Moved to Phase III Production 
+// !* Rending Online Friends and Offline Friends Has Been Moved to Phase III Production
 //    but the Code for It is Still Here once We Have Online Detection in Place
 function TabFriends(props) {
 
