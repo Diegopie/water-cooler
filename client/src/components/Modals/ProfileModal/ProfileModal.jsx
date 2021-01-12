@@ -5,7 +5,7 @@ import { GoMail } from 'react-icons/go';
 
 
 // !* Invite Button Needs the Same Logic For Inviting a User To a Room, 
-//  This Button May be Cut From Phase II Sprint
+//  This Button May be Cut From Phase II Sprint 
 function ProfileModal(props) {
 
     // * Set States, State Helper Functions, and Other Variables
