@@ -1,13 +1,30 @@
 # Water Cooler
 ## Deployed Heroku Link
-[WaterCooler](https://water-cooler-main.herokuapp.com/)
+
 
 readme still under constriction construction 👷‍♂️
 
 
 ## Description
 
-This is a full-stack web application that utilizes MongoDB, Express JS, Node JS, and React JS and allows users to create a Room and/or Social Space where they can walk around and socialize as if they would in real life, message (both public and private) and video others. The app also enables users to send friend requests, invite others to Room and Social Space, accept/decline requests and invitations and block others. 
+![GUI Example](./assets/usage-01.png)
+
+This is an MVP build of a MERN-stack video conferencing web application with a unique, sprite-based GUI for creating social spaces to chat with large groups. The goal is to recreate the real world movement one would do when walking around an office or party space. 
+
+When in a room, users can move their sprites to interact with their friends and create Social Spaces. These Social Spaces are where users can cluster together and host chats while still being able to move to different Social Spaces to engage with their other friends in the room.
+
+The goal of this MVP build is too have: 
+- Installable PWA with limited offline functionality
+- Secure authentication for creating accounts and blocking unauthenticated users from accesssing certain pages 
+- Friends system for accepting/declining friend request, viewing friends, and unfriending users
+- Users can create and invite friends to unique Rooms
+- Each user in a room can move freely in the GUI
+- Users can create and invite room users to social spaces
+- Each Social Space has a unique text chat, visable only to users in that space
+- Users can move between Social Spaces freely
+
+
+[Create an account](https://water-cooler-main.herokuapp.com/) to see how it works!
 
 
 ## Table of Contents
