@@ -50,7 +50,7 @@ The goal of this MVP build is to have:
 - Once in a room, you can move your sprite around the room to interact with your friends!
 - Currently, the sidebar is where you will create and join Social Spaces.
 
-![GUI Example](./assets/usage-04.png)
+![GUI Example](./assets/usage-04.2.png)
 
 - The chat tab will change conversations depending on your current location. You will see either the general room chat or the chat of your Social Space
 - We plan on adding video chats very soon!
@@ -75,31 +75,32 @@ Backend – Node, express, socket.io
 Database – Mongodb, Mongoose
 Authentication – Express-session, passport-local, bcrypt
 Testing – react-testing-library, jest, supertest
-
 ```
 
 ## Installation
 
-Access to GitHub.com and a code editor such as vscode is necessary. Click the GitHub link provided above to the APP REPO. Click on the green button that says Clone or Download and Choose how you would like to download: using the SSH/HTTPS keys or download the zip file. If using SSH/HTTPS Key: You will copy the link shown and open up either terminal (mac: pre-installed) or gitbash (pc: must be installed). Once the application is open, you will type git clone paste url here. If using Download ZIP: Click on Download Zip. Locate the file and double click it to unzip the file. Locate the unzipped folder and open it.
+We are currently not accepting any pull requests but you are welcome to view and experiment with our code. Please [Contact](#Contact) us if you have any feedback! You must have [node.js](https://nodejs.org/en/) and [mongoDB](https://www.mongodb.com/) installed on your local machine to run this app. [Robo3T](https://robomongo.org/download) is also recommended for managing the database
 
-### How to Use
+- [Fork](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) the repo to your GitHub account.
+- Use your preferred, git connected terminal to clone the project to your local machine.
+- Use your terminal to navigate to the root folder and run `npm i` to install all the dependencies for the server and client
 
-In order to use this APP, you need terminal (mac: pre-installed) or gitbash (pc: must be installed). You also need to download and install [node.js](https://nodejs.org/en/) and [npm](www.npmjs.com) or [yarn](https://yarnpkg.com/) package manager. Open the cloned REPO in your favorite code editor, and then in terminal, enter the command “npm install“ or “yarn install”  to install the dependencies. You will also need to signup for a free account at [mongodb.com](https://www.mongodb.com/) or a mongodb local datase such as [Robo3T](https://robomongo.org/download). Now you are ready to start using  the app by entering “npm start” on your terminal or gitbash. If you just want to try how the app works, you can go to the link [here](https://water-cooler-main.herokuapp.com/)
+Follow the rest of this README to understand how our app works. Our code is well commented so you may find more insight looking at the code as well.
 
 > [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
 
 ## Available Scripts
 
-These are some of the key scripts used during development. Linting rules and test must pass, as we use Travis CI to run these scripts before a PR can be merged.
+These are some of the key scripts used during development. They all must be run from the root folder.
 
 | Script | Description |
 | ------ | ------ |
-| npm start:server | begins server using nodemon |
-| npm start:client | begin React server in dev mode |
-| npm lint | uses eslint to check for linting errors |
-| npm lint:fix | if an issue occurs with eslint, this script can resolve the issue |
-| npm test:server | run tests for the server |
-| npm test:client | run tests for the client |
+| npm start:server | Begin server using nodemon |
+| npm start:client | Begin React server in dev mode |
+| npm lint | Use eslint to check for linting errors |
+| npm lint:fix | If an issue occurs with eslint, this script can resolve the issue |
+| npm test:server | Run tests for the server |
+| npm test:client | Run tests for the client |
 
 > [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
 
@@ -180,17 +181,80 @@ These are some of the key scripts used during development. Linting rules and tes
 &NewLine;
 &NewLine;
 
+We use a Mongo database to service our application, with Robo3T being our interface of choice.
+
 ![Database Map](./assets/DB_Map-01.png)
 
 #### Models
 
+All our modles are exported from an index.js file for simplicity. Each individual file is matches the DB map above, with users.js using additional middleware to index certain documents for search and for password security.  
+
+``` js
+module.exports = {
+    User: require('./users'),
+    DMChat: require('./dmchats'),
+    Room: require('./rooms'),
+    RoomChat: require('./roomchats'),
+    SocialSpace: require('./socialspaces'),
+    SocialSpaceChat: require('./socialspacechats')
+};
+```
+
 #### Seeds
+
+You will find a seeds folder within the server folder. This has a README of it's own to manage the seeds. You will find a few JS files that can create users, active rooms, active Social Spaces within those rooms, populate your friends list, populate your friend requests, and more.
 
 > [Back To Database](#Database) || [Back To Server](#Server) || [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
 
 ### Routes
 
-#### Managing Friends
+This app relies on dozens of API routes to manage each feature. They too are exported from an index.js file for simplicity. Obviously, each file using API routes for that specific feature. auth is shorthand for authenticated user and manages login/signup/search,etc.
+
+```js
+router.use('/api/user', auth); 
+router. use('/api/friends', friends);
+router.use('/api/room', rooms);
+router.use('/api/socialspace', socialSpaces);
+router.use('/api/socket', sockets);
+router.use('/api/chat', chats);
+
+module.exports = router;
+```
+
+#### Controllers
+
+user-arrays.js can be imported into a route to quickly manage a user's db collection. This typically used to add or remove IDs from array documents, such as friends. Here is an example of using this controller to accept friend requests.
+
+- Call `dbArray`
+- Specify either `.push` or `.pull` to add or remove data from an array
+- (Arg One, , ): Specify which array you want to access
+- ( , Arg Two, ): Specify which ID will be used to search the database
+- ( , , Arg Three): Specify which ID will be added to the array
+
+``` js
+const { dbArray } = require('../controllers/user-arrays');
+
+// * Accepting Friend Request
+router.put('/accept', async ({ body }, res) => {
+    try {
+        // ** Access User's Friend's Db and Push User's ID to 'friends' Array
+        dbArray.push('friends', body.friend, body.user);
+        // ** Access User's Friend's db and Pull User's ID From 'outboundPendingFriends' array
+        dbArray.pull('outboundPendingFriends', body.friend, body.user);
+        // ** Access User's db and Push Friend's ID to 'friends' Array
+        dbArray.push('friends', body.user, body.friend);
+        // ** Access User's db and Pull Friend's From 'inboundPendingFriends' Array
+        dbArray.pull('inboundPendingFriends', body.user, body.friend);
+        // ** Send Success to Client
+        res.json({ success: true });
+    } catch (err) {
+        console.log('/api/friends/accept error: ', err);
+        res.json({ success: false });
+    }
+});
+```
+
+You may be able to see that this code can be problematic if one of these db calls fail, as success: true can still be sent if one of them fails. We have a large refactor planned now that this MVP is released.
 
 > [Back To Routes](#Routes) || [Back To Server](#Server) || [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
 
@@ -198,13 +262,25 @@ These are some of the key scripts used during development. Linting rules and tes
 
 #### Express-session, Passport, Passport-Local Strategy, bcryptjs
 
-We started with JWT for its simplicity and then switched to Passport and Passport-Local Strategy with Express-session mainly because one cannot manually expire a token after it has been created. Therefore, we cannot log out with JWT on the server-side as with sessions and bcryptjs, a hashing node library. In addition to setting up Express-session, Passport and Passport-local middlewares and config (in server.js and server/config/passport.js), we also added a Mongoose-Schema pre-hook and  password verification method (in server/models/users.js) so that when a new user signs up, the password will be automatically hashed before saving the user data to our database and when a user login, our database  will compare the hashed passwords to validate the user. We created another authentication middleware for pages to which only an authorized user can access (see server/middlewares/authRequired.js). When a user logs out, we will destroy the session and use logout( )  method from passport-local strategy. The setup takes a little  extra time in comparison to JWT;  however, it works well for the scope and purpose of our project and we don’t need to re-issue tokens on the front end.
+We started with JWT for its simplicity and then switched to Passport and Passport-Local Strategy with Express-session mainly because one cannot manually expire a token after it has been created.
 
-> [Back To Authentication](#Authentication) || [Back To Server](#Server) || [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
+Therefore, we cannot log out with JWT on the server-side as with sessions and bcryptjs, a hashing node library. In addition to setting up Express-session, Passport and Passport-local middlewares and config (in server.js and server/config/passport.js), we also added a Mongoose-Schema pre-hook and  password verification method (in server/models/users.js) so that when a new user signs up, the password will be automatically hashed before saving the user data to our database and when a user login, our database  will compare the hashed passwords to validate the user.
+
+We created another authentication middleware for pages to which only an authorized user can access (see server/middlewares/authRequired.js). When a user logs out, we will destroy the session and use logout( )  method from passport-local strategy.
+
+The setup takes a little  extra time in comparison to JWT;  however, it works well for the scope and purpose of our project and we don’t need to re-issue tokens on the front end.
+
+> [Back To Server](#Server) || [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
 
 ### GUI
 
-Initially we started to test how to use socket for multiple player(sprite) separate from the main socket used for Rooms and Social Space so that our team members can work paralle and move the project faster. Basically when the client socket connects with the server, there is a player object created on the server with socket.id as key and then emit to the client through the socket chanel and the front side renders a new player. Then the front end emits the players movement back to the server where we placed the logic to set the boundaries of the movement and check the approximity of each player(sprite). When two players are close enough, there is a message (key, value pair) attached to the players obj and then emit the data back to client side where the messages are rendered.
+Initially we started to test how to use socket for multiple player(sprite) separate from the main socket used for Rooms and Social Space so that our team members can work paralle and move the project faster.
+
+Basically when the client socket connects with the server, there is a player object created on the server with socket.id as key and then emit to the client through the socket chanel and the front side renders a new player.
+
+Then the front end emits the players movement back to the server where we placed the logic to set the boundaries of the movement and check the approximity of each player(sprite).
+
+When two players are close enough, there is a message (key, value pair) attached to the players obj and then emit the data back to client side where the messages are rendered.
 
 > [Back To Server](#Server) || [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
 
