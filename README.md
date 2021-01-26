@@ -286,23 +286,73 @@ When two players are close enough, there is a message (key, value pair) attached
 
 ## Client
 
+We use react.js to build our front-end interface. We have custom linting rules beyond what react defaults with and a basic service worker to manage the PWA usage.
+
 - [App.jsx](#App.jsx)
 - [Utilities and Data](#Utilities-and-Data)
 - [Components](#Components)
 
 ### App.jsx
 
-> [Back To Client](#Client) || [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
+Naturally, all our pages are imported into app.jsx. We also use a few context files to manage the various sockets that power different features. React-router-dom is used for our page routes, with Toastify, our header (title sideNav), and our sidebar (titled Slider) components included so they may be used globally. We also manage re-routing non-authenticated users withing app.jsx
+
+``` js
+ return (
+  <Router>
+    <SocketProvider>
+      <GUIProvider>
+        <ChatProvider>
+            <SideNav />
+            <ToastContainer transition={Zoom} autoClose={3000} />
+            <main>
+                <Slider />
+                <Container>
+                    <Switch>
+                        <Route exact path='/' component={Homepage} />
+                        <Route exact path='/profile' component={Profile} />
+                        <Route exact path='/rooms/:id' component={RoomGUI} />
+                        <Route exact path='/rooms/:id/:id' component={SocialSpace} />
+                        <Route exact path='/space' component={Space} />
+                    </Switch>
+                </Container>
+            </main>
+            <Footer />
+        </ChatProvider>
+      </GUIProvider>
+    </SocketProvider>
+  </Router>
+);
+```
 
 ### Utilities and Data
 
+/client/src/utils contains several utility files used throughout the application to manage our features. The provider files help manage our socket.io integration and the context files help move data around different parts of the app. Below is a map of our [Components](#Components), which also maps where each utility is used.
+
+/client/src/data contains mostly dummy data in place of DB data for use during development to assist with styling and UI/UX design. Any component that uses DB data can be switched back and forth by simply updating this line of code to read yes or no (personal note: I really wish I had used boolean values for this, but that's what our planned refactor is for 😅)
+
+``` js
+let dummyData = 'no';
+```
+
+Files beginning with production are used in the final app, such us an array of user icons for us to quickly render with a .map
+
+> [Back To Client](#Client) || [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
+
 ### Components
+
+Here is a map of all our components and utilities with where they are placed within the application. Open the image in a new tab to get a closer look. Our most complex components are those used for our GUI and those used for our Sidebar
 
 ![Component Map](./assets/component_map-02.jpg)
 
 #### GUI Components
 
-After researching and testing different options (phaser, React 3D and HTML5 canvas), we feel a 2D RPG like game is sufficient for this project. With the help of great online resources (see Reference Section below) we put an initial map(tileset) with a moving sprite together in vanilla Javascript (nested arrays), React and CSS. From there, we started to fine tune things such as making sure there is no crash if a non-arrow key is pressed, the sprite faces the same direction as the one it walks towards, adding boundaries so that it does not walk off the map. Then the next thing is to figure out how to use Socket (on and emit) to spawn (render) sprites and record the position of movements. Originally, we had a Dropdown menu for users to choose a map(tileset), and as our app develops, we need that map to be set from a user when creating a room, and React state management and hooks such as useContext and useReducer have made that pretty easy. When it comes to make it a multi-player app, we changed the position to dynamic user control through socket. The structure for RPG related components (see src/components/GUIComponents) is that the GameRPG hosts Map, Map renders Player, and Player passes props to Sprite.
+After researching and testing different options (phaser, React 3D and HTML5 canvas), we feel a 2D RPG like game is sufficient for this project.
+
+With the help of great online resources (see Reference Section below) we put an initial map(tileset) with a moving sprite together in vanilla Javascript (nested arrays), React and CSS. From there, we started to fine tune things such as making sure there is no crash if a non-arrow key is pressed, the sprite faces the same direction as the one it walks towards, adding boundaries so that it does not walk off the map.
+
+Then the next thing is to figure out how to use Socket (on and emit) to spawn (render) sprites and record the position of movements. Originally, we had a Dropdown menu for users to choose a map(tileset), and as our app develops, we need that map to be set from a user when creating a room, and React state management and hooks such as useContext and useReducer have made that pretty easy. When it comes to make it a multi-player app, we changed the position to dynamic user control through socket.
+
+The structure for RPG related components (see src/components/GUIComponents) is that the GameRPG hosts Map, Map renders Player, and Player passes props to Sprite.
 
 #### Sidebar
 
