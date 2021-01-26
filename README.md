@@ -1,74 +1,96 @@
 # Water Cooler
-## Deployed Heroku Link
-
-
-readme still under constriction construction 👷‍♂️
-
 
 ## Description
 
-![GUI Example](./assets/usage-01.png)
+![GUI Example](./assets/desc-01.png)
 
-This is an MVP build of a MERN-stack video conferencing web application with a unique, sprite-based GUI for creating social spaces to chat with large groups. The goal is to recreate the real world movement one would do when walking around an office or party space. 
+This is an MVP build of a MERN-stack video conferencing web application with a unique, sprite-based GUI for creating social spaces to chat with large groups. The goal is to recreate the real world movement one would do when walking around an office or party space.
 
 When in a room, users can move their sprites to interact with their friends and create Social Spaces. These Social Spaces are where users can cluster together and host chats while still being able to move to different Social Spaces to engage with their other friends in the room.
 
-The goal of this MVP build is too have: 
+The goal of this MVP build is to have:
+
 - Installable PWA with limited offline functionality
-- Secure authentication for creating accounts and blocking unauthenticated users from accesssing certain pages 
+- Secure authentication for creating accounts and blocking unauthenticated users from accessing certain pages
 - Friends system for accepting/declining friend request, viewing friends, and unfriending users
 - Users can create and invite friends to unique Rooms
 - Each user in a room can move freely in the GUI
 - Users can create and invite room users to social spaces
-- Each Social Space has a unique text chat, visable only to users in that space
+- Each Social Space has a unique text chat, visible only to users in that space
 - Users can move between Social Spaces freely
-
 
 [Create an account](https://water-cooler-main.herokuapp.com/) to see how it works!
 
-
 ## Table of Contents
-* [Technologies](#Technologies)
-* [Usage](#Usage)
-* [Development](#Development)
-* [Server](#Server)
-* [Client](#Client)
-* [Tests](#Tests)
-* [Bugs](#Bugs)
-* [Future Development](#Future-Development)
-* [License](#License)
-* [Contributors](#Contributors)
 
-## Technologies
+- [Technologies](#Technologies)
+- [Usage](#Usage)
+- [Development](#Development)
+- [Server](#Server)
+- [Client](#Client)
+- [Tests](#Tests)
+- [Bugs](#Bugs)
+- [Future Development](#Future-Development)
+- [License](#License)
+- [Contributors](#Contributors)
+- [Contact](#Contact)
 
-```
+## Usage
+
+- Begin by creating an account. You can update these details in your profile page
+
+![GUI Example](./assets/usage-01.png)
+
+- Then find your friends using the search icon
+
+![GUI Example](./assets/usage-02.png)
+
+- Now you can create a room and invite your friends from the home screen
+- You can also join any open rooms that your friends are hosing!
+
+![GUI Example](./assets/usage-03.png)
+
+- Once in a room, you can move your sprite around the room to interact with your friends!
+- Currently, the sidebar is where you will create and join social spaces.
+
+![GUI Example](./assets/usage-04.png)
+
+- The chat tab will change conversations depending on your current location. You will see either the general room chat or the chat of your Social Space
+- We plan on adding video chats very soon!
+
+This application is far from finished so we would love to hear your feedback! See [Future Development](#Future-Development) and [Bugs](#Bugs) for our development plans and [Contact](#Contact) on how to reach us!
+
+## Development
+
+- [Technologies](#Technologies)
+- [Installation](#Installation)
+- [Available Scripts](#Available-Scripts)
+- [Dependencies/Packages](#Dependencies/Packages)
+
+### Technologies
+
+```sh
 Frontend – React, socket.io-client, Bootstrap, React-icons, React-Toastify, use-sound, uuid 
-Backend – Node, express, socket.io	
+Backend – Node, express, socket.io
 Database – Mongodb, Mongoose
 Authentication – Express-session, passport-local, bcrypt
 Testing – react-testing-library, jest, supertest
 
 ```
-## Usage
 
- ## Installation
-  Access to GitHub.com and a code editor such as vscode is necessary. Click the GitHub link provided above to the APP REPO. Click on the green button that says Clone or Download and Choose how you would like to download: using the SSH/HTTPS keys or download the zip file. If using SSH/HTTPS Key: You will copy the link shown and open up either terminal (mac: pre-installed) or gitbash (pc: must be installed). Once the application is open, you will type git clone paste url here. If using Download ZIP: Click on Download Zip. Locate the file and double click it to unzip the file. Locate the unzipped folder and open it. 
+### Installation
 
-  ## How to Use
-  In order to use this APP, you need terminal (mac: pre-installed) or gitbash (pc: must be installed). You also need to download and install [node.js](https://nodejs.org/en/) and [npm](www.npmjs.com) or [yarn](https://yarnpkg.com/) package manager. Open the cloned REPO in your favorite code editor, and then in terminal, enter the command “npm install“ or “yarn install”  to install the dependencies. You will also need to signup for a free account at [mongodb.com](https://www.mongodb.com/) or a mongodb local datase such as [Robo3T](https://robomongo.org/download). Now you are ready to start using  the app by entering “npm start” on your terminal or gitbash. If you just want to try how the app works, you can go to the link [here](https://water-cooler-main.herokuapp.com/)
+Access to GitHub.com and a code editor such as vscode is necessary. Click the GitHub link provided above to the APP REPO. Click on the green button that says Clone or Download and Choose how you would like to download: using the SSH/HTTPS keys or download the zip file. If using SSH/HTTPS Key: You will copy the link shown and open up either terminal (mac: pre-installed) or gitbash (pc: must be installed). Once the application is open, you will type git clone paste url here. If using Download ZIP: Click on Download Zip. Locate the file and double click it to unzip the file. Locate the unzipped folder and open it.
 
+### How to Use
 
-## Development
-
-* [Available Scripts](#Available-Scripts)
-* [Dependencies/Packages](#Dependencies/Packages)
-
+In order to use this APP, you need terminal (mac: pre-installed) or gitbash (pc: must be installed). You also need to download and install [node.js](https://nodejs.org/en/) and [npm](www.npmjs.com) or [yarn](https://yarnpkg.com/) package manager. Open the cloned REPO in your favorite code editor, and then in terminal, enter the command “npm install“ or “yarn install”  to install the dependencies. You will also need to signup for a free account at [mongodb.com](https://www.mongodb.com/) or a mongodb local datase such as [Robo3T](https://robomongo.org/download). Now you are ready to start using  the app by entering “npm start” on your terminal or gitbash. If you just want to try how the app works, you can go to the link [here](https://water-cooler-main.herokuapp.com/)
 
 ### Available Scripts
 
 These are some of the key scripts used during development. Linting rules and test must pass, as we use Travis CI to run these scripts before a PR can be merged.
 
-| Plugin | README |
+| Script | Description |
 | ------ | ------ |
 | npm start:server | begins server using nodemon |
 | npm start:client | begin React server in dev mode |
