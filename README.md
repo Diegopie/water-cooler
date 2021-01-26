@@ -2,9 +2,9 @@
 
 ## Description
 
-![GUI Example](./assets/desc-01.png)
+![GUI Example](./assets/desc-02.png)
 
-This is an MVP build of a MERN-stack video conferencing web application with a unique, sprite-based GUI for creating social spaces to chat with large groups. The goal is to recreate the real world movement one would do when walking around an office or party space.
+This is an MVP build of a MERN-stack video conferencing web application with a unique, sprite-based GUI for creating social spaces to chat with large groups. The goal is to recreate the real world movement/interactions that one would do when walking around a real-world office or party space.
 
 When in a room, users can move their sprites to interact with their friends and create Social Spaces. These Social Spaces are where users can cluster together and host chats while still being able to move to different Social Spaces to engage with their other friends in the room.
 
@@ -19,21 +19,18 @@ The goal of this MVP build is to have:
 - Each Social Space has a unique text chat, visible only to users in that space
 - Users can move between Social Spaces freely
 
-[Create an account](https://water-cooler-main.herokuapp.com/) to see how it works!
+[Create an account](https://water-cooler-main.herokuapp.com/) or jump to [Usage](#Usage) to see how it works!
 
 ## Table of Contents
 
-- [Technologies](#Technologies)
 - [Usage](#Usage)
 - [Development](#Development)
-- [Server](#Server)
-- [Client](#Client)
-- [Tests](#Tests)
 - [Bugs](#Bugs)
 - [Future Development](#Future-Development)
-- [License](#License)
 - [Contributors](#Contributors)
 - [Contact](#Contact)
+- [Reference Material](#Reference-Material)
+- [License](#License)
 
 ## Usage
 
@@ -51,7 +48,7 @@ The goal of this MVP build is to have:
 ![GUI Example](./assets/usage-03.png)
 
 - Once in a room, you can move your sprite around the room to interact with your friends!
-- Currently, the sidebar is where you will create and join social spaces.
+- Currently, the sidebar is where you will create and join Social Spaces.
 
 ![GUI Example](./assets/usage-04.png)
 
@@ -60,14 +57,17 @@ The goal of this MVP build is to have:
 
 This application is far from finished so we would love to hear your feedback! See [Future Development](#Future-Development) and [Bugs](#Bugs) for our development plans and [Contact](#Contact) on how to reach us!
 
-## Development
+# Development
 
-- [Technologies](#Technologies)
+- [Technology Overview](#Technology-Overview)
 - [Installation](#Installation)
 - [Available Scripts](#Available-Scripts)
 - [Dependencies/Packages](#Dependencies/Packages)
+- [Server](#Server)
+- [Client](#Client)
+- [Tests](#Tests)
 
-### Technologies
+## Technology Overview
 
 ```sh
 Frontend – React, socket.io-client, Bootstrap, React-icons, React-Toastify, use-sound, uuid 
@@ -78,7 +78,7 @@ Testing – react-testing-library, jest, supertest
 
 ```
 
-### Installation
+## Installation
 
 Access to GitHub.com and a code editor such as vscode is necessary. Click the GitHub link provided above to the APP REPO. Click on the green button that says Clone or Download and Choose how you would like to download: using the SSH/HTTPS keys or download the zip file. If using SSH/HTTPS Key: You will copy the link shown and open up either terminal (mac: pre-installed) or gitbash (pc: must be installed). Once the application is open, you will type git clone paste url here. If using Download ZIP: Click on Download Zip. Locate the file and double click it to unzip the file. Locate the unzipped folder and open it.
 
@@ -86,7 +86,9 @@ Access to GitHub.com and a code editor such as vscode is necessary. Click the Gi
 
 In order to use this APP, you need terminal (mac: pre-installed) or gitbash (pc: must be installed). You also need to download and install [node.js](https://nodejs.org/en/) and [npm](www.npmjs.com) or [yarn](https://yarnpkg.com/) package manager. Open the cloned REPO in your favorite code editor, and then in terminal, enter the command “npm install“ or “yarn install”  to install the dependencies. You will also need to signup for a free account at [mongodb.com](https://www.mongodb.com/) or a mongodb local datase such as [Robo3T](https://robomongo.org/download). Now you are ready to start using  the app by entering “npm start” on your terminal or gitbash. If you just want to try how the app works, you can go to the link [here](https://water-cooler-main.herokuapp.com/)
 
-### Available Scripts
+> [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
+
+## Available Scripts
 
 These are some of the key scripts used during development. Linting rules and test must pass, as we use Travis CI to run these scripts before a PR can be merged.
 
@@ -99,15 +101,15 @@ These are some of the key scripts used during development. Linting rules and tes
 | npm test:server | run tests for the server |
 | npm test:client | run tests for the client |
 
-&NewLine;
-&NewLine;
-
-### Dependencies/Packages
+> [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
 
 &NewLine;
 &NewLine;
 
-#### Dependencies
+## Dependencies/Packages
+
+&NewLine;
+&NewLine;
 
 ```sh
 [bcryptjs](https://www.npmjs.com/package/bcryptjs)
@@ -134,35 +136,44 @@ These are some of the key scripts used during development. Linting rules and tes
 
 [react-icons](https://www.npmjs.com/package/react-icons)
 
+[react-loader-spinner](https://www.npmjs.com/package/react-loader-spinner)
+
 [socket.io](https://www.npmjs.com/package/socket.io)
 
 [socket.io-client](https://www.npmjs.com/package/socket.io-client)
+
+[Use-sound](https://www.npmjs.com/package/use-sound)
 
 [uuid](https://www.npmjs.com/package/uuid)
 
 [yarn](https://www.npmjs.com/package/yarn)
 ```
 
-#### Dev Dependencies
+### Dev Dependencies
 
 ```sh
 [eslint](https://www.npmjs.com/package/eslint)
 
 [jest](https://www.npmjs.com/package/jest)
 
+[Jest Testing Library](https://jestjs.io/docs/en/getting-started)
+
 [nodemon](https://www.npmjs.com/package/nodemon)
+
+[React-Testing-Library](https://testing-library.com/docs/react-testing-library/intro/)
 
 [supertest](https://www.npmjs.com/package/supertest)
 ```
-> [Back To Development](#Development)
+
+> [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
 
 ## Server
 
-* [Database](#Database)
-* [Routes](#Routes)
-* [Authentication](#Authentication)
-* [GUI](#GUI)
-* [Video and Chat](#Video-and-Chat)
+- [Database](#Database)
+- [Routes](#Routes)
+- [Authentication](#Authentication)
+- [GUI](#GUI)
+- [Video and Chat](#Video-and-Chat)
 
 ### Database
 
@@ -175,9 +186,13 @@ These are some of the key scripts used during development. Linting rules and tes
 
 #### Seeds
 
+> [Back To Database](#Database) || [Back To Server](#Server) || [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
+
 ### Routes
 
 #### Managing Friends
+
+> [Back To Routes](#Routes) || [Back To Server](#Server) || [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
 
 ### Authentication
 
@@ -185,19 +200,23 @@ These are some of the key scripts used during development. Linting rules and tes
 
 We started with JWT for its simplicity and then switched to Passport and Passport-Local Strategy with Express-session mainly because one cannot manually expire a token after it has been created. Therefore, we cannot log out with JWT on the server-side as with sessions and bcryptjs, a hashing node library. In addition to setting up Express-session, Passport and Passport-local middlewares and config (in server.js and server/config/passport.js), we also added a Mongoose-Schema pre-hook and  password verification method (in server/models/users.js) so that when a new user signs up, the password will be automatically hashed before saving the user data to our database and when a user login, our database  will compare the hashed passwords to validate the user. We created another authentication middleware for pages to which only an authorized user can access (see server/middlewares/authRequired.js). When a user logs out, we will destroy the session and use logout( )  method from passport-local strategy. The setup takes a little  extra time in comparison to JWT;  however, it works well for the scope and purpose of our project and we don’t need to re-issue tokens on the front end.
 
+> [Back To Authentication](#Authentication) || [Back To Server](#Server) || [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
+
 ### GUI
 
 Initially we started to test how to use socket for multiple player(sprite) separate from the main socket used for Rooms and Social Space so that our team members can work paralle and move the project faster. Basically when the client socket connects with the server, there is a player object created on the server with socket.id as key and then emit to the client through the socket chanel and the front side renders a new player. Then the front end emits the players movement back to the server where we placed the logic to set the boundaries of the movement and check the approximity of each player(sprite). When two players are close enough, there is a message (key, value pair) attached to the players obj and then emit the data back to client side where the messages are rendered.
 
+> [Back To Server](#Server) || [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
+
 ## Client
 
-* [PWA](#PWA)
-* [App.jsx](#App.jsx)
-* [Components](#Components)
-
-### PWA
+- [App.jsx](#App.jsx)
+- [Utilities and Data](#Utilities-and-Data)
+- [Components](#Components)
 
 ### App.jsx
+
+> [Back To Client](#Client) || [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
 
 ### Utilities and Data
 
@@ -205,17 +224,13 @@ Initially we started to test how to use socket for multiple player(sprite) separ
 
 ![Component Map](./assets/component_map-02.jpg)
 
-
-* [GUI Components](#GUI-Components)
-* [Sidebar](#Sidebar)
-
 #### GUI Components
 
 After researching and testing different options (phaser, React 3D and HTML5 canvas), we feel a 2D RPG like game is sufficient for this project. With the help of great online resources (see Reference Section below) we put an initial map(tileset) with a moving sprite together in vanilla Javascript (nested arrays), React and CSS. From there, we started to fine tune things such as making sure there is no crash if a non-arrow key is pressed, the sprite faces the same direction as the one it walks towards, adding boundaries so that it does not walk off the map. Then the next thing is to figure out how to use Socket (on and emit) to spawn (render) sprites and record the position of movements. Originally, we had a Dropdown menu for users to choose a map(tileset), and as our app develops, we need that map to be set from a user when creating a room, and React state management and hooks such as useContext and useReducer have made that pretty easy. When it comes to make it a multi-player app, we changed the position to dynamic user control through socket. The structure for RPG related components (see src/components/GUIComponents) is that the GameRPG hosts Map, Map renders Player, and Player passes props to Sprite.
 
 #### Sidebar
 
-> [Back To Components](#Components) || [Back To Client](#Client) || [Back To Table of Contents](#Table-of-Contents)
+> [Back To Components](#Components) || [Back To Client](#Client) || [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
 
 ## Tests
 
@@ -238,44 +253,40 @@ The test/seeds/index will look for the  seed file of the specific scheme /model 
 
 We first test to make sure Jest works as intended (see initial.test.js). Then we test if userSchema works by first to see if the returned number of users is the same as the test data. Then we test if the hashing password pre-hood works when saving a new user to the database. Then we test mongoose ‘toLowerCase’ and ‘required’ options to make sure that the errors return when there is a missing field.
 
+> [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
+
 ## Bugs
 
-* If a user creates a room without entering in the required info for the database the room is not entered into the db but the user is still routed to a room using the uuid
+- If a user creates a room without entering in the required info for the database the room is not entered into the db but the user is still routed to a room using the uuid
 
 TabFriends passes prop data to ProfileModal that triggers a react warning
+
+> [Back To Table of Contents](#Table-of-Contents)
 
 ## Future Development
 
 ## Contributors
+
 [Diego Hernandez](https://github.com/Diegopiehttps://github.com/Diegopie)
 [Diana Schull](https://github.com/dianalynshull)
 [Bing Z](https://github.com/imbingz)
+
 ### About Us
 
-### Reference
-[Github](github.com)
-[vscode editor]()
-[React JS](https://reactjs.org/)
-[socket.io](https://socket.io/)
-[socket.io - client](https://socket.io/docs/v3/client-api/)
-[Raect-Bootstrap](https://react-bootstrap.github.io/)
-[passport and passport-local](http://www.passportjs.org/packages/passport-local/)
-[express session](https://www.npmjs.com/package/express-session)
-[bcryptjs](https://www.npmjs.com/package/bcryptjs)
-[React-Testing-Library](https://testing-library.com/docs/react-testing-library/intro/) 
-[Jest Testing Library](https://jestjs.io/docs/en/getting-started)
-[Supertest Testing Library](https://www.npmjs.com/package/supertest)
+## Contact
+
+## Reference Material
+
 [Mongoose Testing Document](https://mongoosejs.com/docs/jest.html)
-[Connecting Jest and Mongoose](https://zellwk.com/blog/jest-and-mongoose/)
-[React-Toastify](https://www.npmjs.com/package/react-toastify)
-[Raect-icons](https://react-icons.github.io/react-icons/)
-[Use-sound](https://www.npmjs.com/package/use-sound)
+
+[zellwk.com: Connecting Jest and Mongoose](https://zellwk.com/blog/jest-and-mongoose/)
+
 [canva.com](https://www.canva.com/)
-[Heroku](https://dashboard.heroku.com/apps)
-[Youtube - Socket.io Chat](https://youtu.be/tBr-PybP_9c)
-[Youtube - RPG Game](https://www.youtube.com/watch?v=DqpPgK13oEM&t=127s)
-[Article - Use Socket for Multiplayer-Games](https://theinternetbutton.asciinaut.sh/blog/how-to-use-socket-io-not-the-chat)
-[Atlassian-Jira](https://www.atlassian.com/software/jira)
-[MongoDB Atlas](https://www.mongodb.com/)
+
+[Web Dev Simplified: Socket.io Chat](https://youtu.be/tBr-PybP_9c)
+
+[devmentorlive: RPG Game](https://www.youtube.com/watch?v=DqpPgK13oEM&t=127s)
+
+[asciinaut.sh: Use Socket for Multiplayer-Games](https://theinternetbutton.asciinaut.sh/blog/how-to-use-socket-io-not-the-chat)
 
 ## License
