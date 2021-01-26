@@ -2,6 +2,9 @@
 
 ## Description
 
+&NewLine;
+&NewLine;
+
 ![GUI Example](./assets/desc-02.png)
 
 This is an MVP build of a MERN-stack video conferencing web application with a unique, sprite-based GUI for creating social spaces to chat with large groups. The goal is to recreate the real world movement/interactions that one would do when walking around a real-world office or party space.
@@ -69,6 +72,9 @@ This application is far from finished so we would love to hear your feedback! Se
 
 ## Technology Overview
 
+&NewLine;
+&NewLine;
+
 ```sh
 Frontend – React, socket.io-client, Bootstrap, React-icons, React-Toastify, use-sound, uuid 
 Backend – Node, express, socket.io
@@ -101,6 +107,9 @@ These are some of the key scripts used during development. They all must be run 
 | npm lint:fix | If an issue occurs with eslint, this script can resolve the issue |
 | npm test:server | Run tests for the server |
 | npm test:client | Run tests for the client |
+
+&NewLine;
+&NewLine;
 
 > [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
 
@@ -151,6 +160,9 @@ These are some of the key scripts used during development. They all must be run 
 ```
 
 ### Dev Dependencies
+
+&NewLine;
+&NewLine;
 
 ```sh
 [eslint](https://www.npmjs.com/package/eslint)
@@ -260,7 +272,7 @@ You may be able to see that this code can be problematic if one of these db call
 
 ### Authentication
 
-#### Express-session, Passport, Passport-Local Strategy, bcryptjs
+Express-session, Passport, Passport-Local Strategy, bcryptjs
 
 We started with JWT for its simplicity and then switched to Passport and Passport-Local Strategy with Express-session mainly because one cannot manually expire a token after it has been created.
 
@@ -294,7 +306,7 @@ We use react.js to build our front-end interface. We have custom linting rules b
 
 ### App.jsx
 
-Naturally, all our pages are imported into app.jsx. We also use a few context files to manage the various sockets that power different features. React-router-dom is used for our page routes, with Toastify, our header (title sideNav), and our sidebar (titled Slider) components included so they may be used globally. We also manage re-routing non-authenticated users withing app.jsx
+Naturally, all our pages are imported into app.jsx. We also use a few context files to manage the various sockets that power different features. React-router-dom is used for our page routes, with Toastify, our header (titled sideNav), and our sidebar (titled Slider) components included so they may be used globally. We also manage re-routing non-authenticated users withing app.jsx
 
 ``` js
  return (
@@ -353,6 +365,8 @@ With the help of great online resources (see Reference Section below) we put an 
 Then the next thing is to figure out how to use Socket (on and emit) to spawn (render) sprites and record the position of movements. Originally, we had a Dropdown menu for users to choose a map(tileset), and as our app develops, we need that map to be set from a user when creating a room, and React state management and hooks such as useContext and useReducer have made that pretty easy. When it comes to make it a multi-player app, we changed the position to dynamic user control through socket.
 
 The structure for RPG related components (see src/components/GUIComponents) is that the GameRPG hosts Map, Map renders Player, and Player passes props to Sprite.
+
+> [Back To Components](#Components) || [Back To Client](#Client) || [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
 
 #### Sidebar
 
