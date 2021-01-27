@@ -404,13 +404,13 @@ We have a lot planned for the future of this application. This MVP was built as 
 
 ## Contributors
 
-We are a small team who just recently began coding as part of the University of Utah's Coding Bootcamp. Our goal for this project to be ambitious, to take just 7 short week of development time and create an application that is unique. Something that forced us to learn well beyond our skills at the time. We are passionate about coding and are eager to continue to develope are skills.
+We are a small team who just recently began coding as part of the University of Utah's Coding Bootcamp. Our goal for this project to be ambitious, to take just 7 short week of development time and create an application that is unique. Something that forced us to learn well beyond our skills at the time. We are passionate about coding and are eager to continue to develop our skills.
 
 ![Diego H.](./assets/dh.jpg) Diego Hernandez || [GitHub](https://github.com/Diegopie) || [LinkedIn](https://www.linkedin.com/in/diego-hernandez-7327381b2/)
 
 ![Diego H.](./assets/ds.jpg) Diana Schull || [GitHub](https://github.com/dianalynshull)
 
-![Diego H.](./assets/bz.jpg) Bing Z. [GitHub](https://github.com/imbingz)
+![Diego H.](./assets/bz.jpg) Bing Z. || [GitHub](https://github.com/imbingz)
 
 ## Contact
 
