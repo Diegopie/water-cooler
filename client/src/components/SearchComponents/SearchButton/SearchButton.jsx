@@ -51,7 +51,7 @@ const SearchButton = (props) => {
                 <button
                     className='SearchButton-msg SearchButton-btn'
                     onClick={e => e.preventDefault()}
-                >Message Friend</button>;
+                >Already Friends!</button>;
         }
     });
 
