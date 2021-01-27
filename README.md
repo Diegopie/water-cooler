@@ -119,8 +119,8 @@ These are some of the key scripts used during development. They all must be run 
 &NewLine;
 &NewLine;
 
-| | | | | |
-| ------ | ------ | ------ | ------ | ------ |
+| | | | |
+| ------ | ------ | ------ | ------ |
 | [bcryptjs](https://www.npmjs.com/package/bcryptjs) | [bootstrap](https://www.npmjs.com/package/bootstrap) | [concurrently](https://www.npmjs.com/package/concurrently) | [dotenv](https://www.npmjs.com/package/dotenv) |
 | [express](https://www.npmjs.com/package/express) | [express-session](https://www.npmjs.com/package/express-session) | [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) | [mongoose](https://www.npmjs.com/package/mongoose) |
 | [passport](https://www.npmjs.com/package/passport) | [passport-local](https://www.npmjs.com/package/passport-local) | [react-bootstrap](https://www.npmjs.com/package/react-bootstrap) | [react-icons](https://www.npmjs.com/package/react-icons) |
@@ -135,8 +135,8 @@ These are some of the key scripts used during development. They all must be run 
 &NewLine;
 &NewLine;
 
-| | | | | |
-| ------ | ------ | ------ | ------ | ------ |
+| | | | |
+| ------ | ------ | ------ | ------ |
 | [eslint](https://www.npmjs.com/package/eslint) | [jest](https://www.npmjs.com/package/jest) | [Jest Testing Library](https://jestjs.io/docs/en/getting-started) |[nodemon](https://www.npmjs.com/package/nodemon) |
 | [React-Testing-Library](https://testing-library.com/docs/react-testing-library/intro/) | [supertest](https://www.npmjs.com/package/supertest) |
 
