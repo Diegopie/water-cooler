@@ -93,8 +93,6 @@ We are currently not accepting any pull requests but you are welcome to view and
 
 Follow the rest of this README to understand how our app works. Our code is well commented so you may find more insight looking at the code as well.
 
-> [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
-
 ## Available Scripts
 
 These are some of the key scripts used during development. They all must be run from the root folder.
@@ -121,7 +119,6 @@ These are some of the key scripts used during development. They all must be run 
 &NewLine;
 &NewLine;
 
-```sh
 [bcryptjs](https://www.npmjs.com/package/bcryptjs)
 
 [bootstrap](https://www.npmjs.com/package/bootstrap)
@@ -157,14 +154,12 @@ These are some of the key scripts used during development. They all must be run 
 [uuid](https://www.npmjs.com/package/uuid)
 
 [yarn](https://www.npmjs.com/package/yarn)
-```
 
 ### Dev Dependencies
 
 &NewLine;
 &NewLine;
 
-```sh
 [eslint](https://www.npmjs.com/package/eslint)
 
 [jest](https://www.npmjs.com/package/jest)
@@ -176,7 +171,6 @@ These are some of the key scripts used during development. They all must be run 
 [React-Testing-Library](https://testing-library.com/docs/react-testing-library/intro/)
 
 [supertest](https://www.npmjs.com/package/supertest)
-```
 
 > [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
 
@@ -220,7 +214,7 @@ You will find a seeds folder within the server folder. This has a README of it's
 
 ### Routes
 
-This app relies on dozens of API routes to manage each feature. They too are exported from an index.js file for simplicity. Obviously, each file using API routes for that specific feature. auth is shorthand for authenticated user and manages login/signup/search,etc.
+This app relies on dozens of API routes to manage each feature. They too are exported from an index.js file for simplicity. Obviously, each file using API routes for that specific feature. auth is shorthand for authenticated user and manages login, signup, search, etc.
 
 ```js
 router.use('/api/user', auth); 
@@ -235,7 +229,7 @@ module.exports = router;
 
 #### Controllers
 
-user-arrays.js can be imported into a route to quickly manage a user's db collection. This typically used to add or remove IDs from array documents, such as friends. Here is an example of using this controller to accept friend requests.
+user-arrays.js can be imported into a route to quickly manage a user's db collection. This is typically used to add or remove IDs from array documents, such as friends. Here is an example of using this controller to accept friend requests.
 
 - Call `dbArray`
 - Specify either `.push` or `.pull` to add or remove data from an array
@@ -276,7 +270,7 @@ Express-session, Passport, Passport-Local Strategy, bcryptjs
 
 We started with JWT for its simplicity and then switched to Passport and Passport-Local Strategy with Express-session mainly because one cannot manually expire a token after it has been created.
 
-Therefore, we cannot log out with JWT on the server-side as with sessions and bcryptjs, a hashing node library. In addition to setting up Express-session, Passport and Passport-local middlewares and config (in server.js and server/config/passport.js), we also added a Mongoose-Schema pre-hook and  password verification method (in server/models/users.js) so that when a new user signs up, the password will be automatically hashed before saving the user data to our database and when a user login, our database  will compare the hashed passwords to validate the user.
+Therefore, we cannot log out with JWT on the server-side as with sessions and bcryptjs, a hashing node library. In addition to setting up Express-session, Passport and Passport-local middleware and config (in server.js and server/config/passport.js), we also added a Mongoose-Schema pre-hook and  password verification method (in server/models/users.js) so that when a new user signs up, the password will be automatically hashed before saving the user data to our database and when a user login, our database  will compare the hashed passwords to validate the user.
 
 We created another authentication middleware for pages to which only an authorized user can access (see server/middlewares/authRequired.js). When a user logs out, we will destroy the session and use logout( )  method from passport-local strategy.
 
@@ -286,11 +280,11 @@ The setup takes a little  extra time in comparison to JWT;  however, it works we
 
 ### GUI
 
-Initially we started to test how to use socket for multiple player(sprite) separate from the main socket used for Rooms and Social Space so that our team members can work paralle and move the project faster.
+Initially we started to test how to use socket for multiple player(sprite) separate from the main socket used for Rooms and Social Space so that our team members can work parallel and move the project faster.
 
 Basically when the client socket connects with the server, there is a player object created on the server with socket.id as key and then emit to the client through the socket chanel and the front side renders a new player.
 
-Then the front end emits the players movement back to the server where we placed the logic to set the boundaries of the movement and check the approximity of each player(sprite).
+Then the front end emits the players movement back to the server where we placed the logic to set the boundaries of the movement and check the proximity of each player(sprite).
 
 When two players are close enough, there is a message (key, value pair) attached to the players obj and then emit the data back to client side where the messages are rendered.
 
@@ -354,7 +348,7 @@ Files beginning with production are used in the final app, such us an array of u
 
 Here is a map of all our components and utilities with where they are placed within the application. Open the image in a new tab to get a closer look. Our most complex components are those used for our GUI and those used for our Sidebar
 
-![Component Map](./assets/component_map-02.jpg)
+![Component Map](./assets/component_map-03.jpg)
 
 #### GUI Components
 
@@ -365,10 +359,6 @@ With the help of great online resources (see Reference Section below) we put an 
 Then the next thing is to figure out how to use Socket (on and emit) to spawn (render) sprites and record the position of movements. Originally, we had a Dropdown menu for users to choose a map(tileset), and as our app develops, we need that map to be set from a user when creating a room, and React state management and hooks such as useContext and useReducer have made that pretty easy. When it comes to make it a multi-player app, we changed the position to dynamic user control through socket.
 
 The structure for RPG related components (see src/components/GUIComponents) is that the GameRPG hosts Map, Map renders Player, and Player passes props to Sprite.
-
-> [Back To Components](#Components) || [Back To Client](#Client) || [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
-
-#### Sidebar
 
 > [Back To Components](#Components) || [Back To Client](#Client) || [Back To Development](#Development) || [Back To Table of Contents](#Table-of-Contents)
 
@@ -397,23 +387,63 @@ We first test to make sure Jest works as intended (see initial.test.js). Then we
 
 ## Bugs
 
-- If a user creates a room without entering in the required info for the database the room is not entered into the db but the user is still routed to a room using the uuid
+### Sidebar Bugs
+
+&NewLine;
+
+Chats sometimes do not render until the user sends their own message
 
 TabFriends passes prop data to ProfileModal that triggers a react warning
+
+TabFriends can take a long time to render the friends every time the sidebar is opened
+{note: this is because state is reset every time the sidebar is closed. Storing the state that renders friends somewhere else should fix this issue}
+
+### GUI Bugs
+
+&NewLine;
+
+GUI background does not render for anyone but the host sometimes
+
+Only the user's username will render above the sprites, rather than the username of who is controlling the sprite
+
+### Room Bugs
+
+&NewLine;
+
+Leave Social Space button does not render sometimes
+
+Casino is not being rendered when the user selects it from the home page
+
+Users are not being removed from the room when they close the tab
+
+Users are not being removed from the social space when creating a new one
 
 > [Back To Table of Contents](#Table-of-Contents)
 
 ## Future Development
 
+We have a lot planned for the future of this application. This MVP was built as a school project but we aim to continue working on this to enjoy with our friends! We use Jira to organize our development time and have our next sprint planned out. Here are some highlights
+
+- Code Review and Refactor
+- Stable video chats within social spaces
+- GUI Responsiveness with appropriate coordinate updating across screen sizes
+- Direct messages between friends
+- Firebase integration for user uploaded photos
+- And more!
+
 ## Contributors
 
-[Diego Hernandez](https://github.com/Diegopiehttps://github.com/Diegopie)
-[Diana Schull](https://github.com/dianalynshull)
-[Bing Z](https://github.com/imbingz)
+We are a small team who just recently began coding as part of the University of Utah's Coding Bootcamp. Our goal for this project to be ambitious, to take just 7 short week of development time and create an application that is unique. Something that forced us to learn well beyond our skills at the time. We are passionate about coding and are eager to continue to develope are skills.
 
-### About Us
+![Diego H.](./assets/dh.jpg) Diego Hernandez || [GitHub](https://github.com/Diegopie) || [LinkedIn](https://www.linkedin.com/in/diego-hernandez-7327381b2/)
+
+![Diego H.](./assets/ds.jpg) Diana Schull || [GitHub](https://github.com/dianalynshull)
+
+![Diego H.](./assets/bz.jpg) Bing Z. [GitHub](https://github.com/imbingz)
 
 ## Contact
+
+If you have any feedback our questions, please reach us at diegopie@outlook.com!
 
 ## Reference Material
 
@@ -429,4 +459,8 @@ TabFriends passes prop data to ProfileModal that triggers a react warning
 
 [asciinaut.sh: Use Socket for Multiplayer-Games](https://theinternetbutton.asciinaut.sh/blog/how-to-use-socket-io-not-the-chat)
 
+> [Back To Table of Contents](#Table-of-Contents)
+
 ## License
+
+This project is [MIT](https://choosealicense.com/licenses/mit/) licensed
