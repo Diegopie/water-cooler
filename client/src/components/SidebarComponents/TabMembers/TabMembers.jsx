@@ -369,7 +369,7 @@ function TabMembers(props) {
                                         <FaVideo size={20} style={{ fill: 'orangered', marginLeft: 5 }} />
                                     </button>
                                 }  
-                                { (socialSpace.publicSocialSpaceId === !spaceId) &&
+                                { (socialSpace.publicSocialSpaceId !== spaceId) &&
                                     <button
                                         className='TabMembers-join-btn'
                                         onClick={() => { joinSpace(socialSpace.publicSocialSpaceId); }}

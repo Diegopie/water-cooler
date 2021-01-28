@@ -87,8 +87,8 @@ io.on('connection', (socket) => {
                 for (let j = i + 1; !message && j < playerPositions.length; j++) {
                    
                     if (Math.abs(playerPositions[i].x - playerPositions[j].x) <= 32 && Math.abs(playerPositions[i].y - playerPositions[j].y) <= 32) {
-                        playerPositions[i].message = 'Hey, like to chat?';
-                        playerPositions[j].message = 'Hello , genius';
+                        playerPositions[i].message = 'Want to chat?';
+                        playerPositions[j].message = 'Want to chat?';
                     }
                 }
             }
