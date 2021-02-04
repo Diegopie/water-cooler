@@ -40,7 +40,7 @@ export function GUIProvider({ children }) {
 
     useEffect(() => {
         if (player) {
-            console.log(`hit player useEffect(): ${JSON.stringify(player)}`);
+            // console.log(`hit player useEffect(): ${JSON.stringify(player)}`);
         }
     });
 

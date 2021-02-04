@@ -14,7 +14,7 @@ export function SocketProvider({ children }) {
     const [sessionId, setSessionId] = useState();
 
     useEffect(() => {
-        console.log('getting session id');
+        // console.log('getting session id');
         const getSessionId = async () => {
             try {
                 const response = await fetch(
@@ -43,7 +43,7 @@ export function SocketProvider({ children }) {
                         }
                     );
                     const json = await response.json();
-                    console.log(json);
+                    // console.log(json);
                 } catch (err) {
                     console.log(err);
                 }
@@ -56,7 +56,7 @@ export function SocketProvider({ children }) {
         if (!sessionId) {
             return;
         }
-        console.log('running create socket');
+        // console.log('running create socket');
         const createSocket = () => {
             const newSocket = io(
                 '/',
